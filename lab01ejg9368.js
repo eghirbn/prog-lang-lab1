@@ -10,6 +10,7 @@ function fiveTableFunction(input){
 const inputTable = [1,2,3,4,5,6,7,8,9,10];
 
 const fiveTable = inputTable.map(fiveTableFunction);
+console.log("fiveTable: ");
 console.log(fiveTable);
 
 //manipulating inputTable array with thirteenTable function (multiples of 13)
@@ -18,10 +19,12 @@ function thirteenTableFunction(input){
 }
 
 const thirteenTable = inputTable.map(thirteenTableFunction);
+console.log("thirteenTable: ");
 console.log(thirteenTable);
 
 //manipulating inputTable array with Math.sqrt to make squaresTable
 const squaresTable = inputTable.map(Math.sqrt);
+console.log("squaresTable: ");
 console.log(squaresTable);
 
 
@@ -35,6 +38,7 @@ function checkOdd(input){
 const filterfrom100 = Array.from({ length: 100 }, (_, i) => i + 1);
 const oddMults5 = filterfrom100.filter(item => ((item%5)==0) && ((item%2) != 0) );
 
+console.log("Printing Odd Mutltiples of 5: ");
 console.log(oddMults5);
 
 //filtering and adding odd multiples of 7 with filter() and reduce
@@ -47,6 +51,7 @@ function sumUp(total, input){
 }
 //also using array filterFrom100
 const evenMults7 = filterfrom100.filter(item => ((item%7)==0)).filter(checkEven).reduce(sumUp, 0);
+console.log("Even Multiples of 7: ");
 console.log(evenMults7);
 
 //currying cylinder volume function
@@ -84,7 +89,7 @@ const row = trTag(cell1+cell2);
 
 const htmlTable = tableTag(row);
 
-console.log(`HTML table: \n ${htmlTable}`);
+console.log(`\nHTML table: \n ${htmlTable}`);
 
 //making generic mulitplier
 const genericTable = (multiplier, condition) => (array) => array.map(num => num*multiplier).filter(condition);
@@ -95,4 +100,5 @@ const someCondition = num => num%8 == 0;
 const tempTable = genericTable(4, someCondition)(sampleTable);
 
 //generic success
+console.log("Generic Success Test: ");
 console.log(tempTable);
