@@ -24,13 +24,15 @@ console.log(thirteenTable);
 const squaresTable = inputTable.map(Math.sqrt);
 console.log(squaresTable);
 
-//filtering and adding odd multiples of 5 with filter() and reduce
+
+//filtering odd multiples of 5 with filter()
 
 function checkOdd(input){
    return (input%2 != 0);
 }
 
-const oddMults5 = fiveTable.filter(checkOdd);
+const filterfrom100 = Array.from({ length: 100 }, (_, i) => i + 1);
+const oddMults5 = filterfrom100.filter(item => ((item%5)==0) && (item%2) != 0 );
 
 console.log(oddMults5);
 
@@ -45,20 +47,3 @@ function sumUp(total, input){
 
 const evenMults7 = inputTable.map(input => input*=7 ).filter(checkEven).reduce(sumUp, 0);
 console.log(evenMults7);
-
-/*getting even multiples of 7
-function sumEvenMultiplesOf7(total, input){
-   if(input%2 == 0){
-      return total + input;
-   }
-   return total;
-}
-
-function sevenTableFunction(input){
-   return input*=7;
-}
-
-const sevenTable = inputTable.map(sevenTableFunction);
-
-//console.log(sevenTable.reduce(sumEvenMultiplesOf7, 0))
-*/
