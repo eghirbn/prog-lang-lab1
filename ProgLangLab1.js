@@ -85,3 +85,12 @@ const row = trTag(cell1+cell2);
 const htmlTable = tableTag(row);
 
 console.log(`HTML table: \n ${htmlTable}`);
+
+//making generic mulitplier
+const genericTable = (multiplier, condition) => (array) => array.map(num => num*multiplier).filter(condition);
+
+const sampleTable = Array.from({ length: 20 }, (_, i) => i + 1);
+const someCondition = num => num%8 == 0;
+const tempTable = genericTable(4, someCondition)(sampleTable);
+
+console.log(tempTable);
