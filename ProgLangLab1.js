@@ -31,8 +31,9 @@ function checkOdd(input){
    return (input%2 != 0);
 }
 
+//created Array of length 100, first element's index =1 to be able to get the values from 1 to 100
 const filterfrom100 = Array.from({ length: 100 }, (_, i) => i + 1);
-const oddMults5 = filterfrom100.filter(item => ((item%5)==0) && (item%2) != 0 );
+const oddMults5 = filterfrom100.filter(item => ((item%5)==0) && ((item%2) != 0) );
 
 console.log(oddMults5);
 
@@ -44,6 +45,43 @@ function checkEven(input){
 function sumUp(total, input){
    return total +input;
 }
-
-const evenMults7 = inputTable.map(input => input*=7 ).filter(checkEven).reduce(sumUp, 0);
+//also using array filterFrom100
+const evenMults7 = filterfrom100.filter(item => ((item%7)==0)).filter(checkEven).reduce(sumUp, 0);
 console.log(evenMults7);
+
+//currying cylinder volume function
+function cylinder_volume(r){ //making it take 1 input at a time and chaining
+   return (h) => 3.14*r*r*h;
+}
+/*Call the curried function using:
+o r = 5, h = 10
+o r = 5, h = 17
+o r = 5, h = 11
+*/
+console.log("Calling cylinder volume with parameters: (5, 10), (5,17), (5, 11)");
+
+console.log(cylinder_volume(5)(10));
+console.log(cylinder_volume(5)(17));
+console.log(cylinder_volume(5)(11));
+
+
+//creating html table with closures
+makeTag = function(beginTag, endTag){ //takes tags like "<td>, </td>"
+   return function(textcontent){
+      return beginTag + textcontent + endTag; //places textContent in the tags
+   }
+}
+
+const tableTag = makeTag("<table>\n", "\n</table>");
+const trTag = makeTag("<tr>\n", "\n</tr>");
+const tdTag = makeTag("<td>\n", "\n</td>");
+
+//make table from inside out. cells > row > table
+const cell1 = tdTag("Row 1, cell 1"); //passes this as textContent to the returned inner function
+const cell2 = tdTag("Row 1, cell 2");
+
+const row = trTag(cell1+cell2);
+
+const htmlTable = tableTag(row);
+
+console.log(`HTML table: \n ${htmlTable}`);
